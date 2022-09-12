@@ -2,12 +2,40 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppCustoViagem.View.ListaPedagios"
-             BackgroundImage="lista.png">
+             BackgroundImage="lista.png"
+             Title="Lista de Pedágios">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Pedágio" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+        <StackLayout Margin="50,70,50,100">
+            <ListView x:Name="lst_pedagios">
+                <ListView.Header>
+                    <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Localização:" FontSize="Medium" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Valor:" FontSize="Medium" />
+                    </Grid>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Remover" Clicked="MenuItem_ClickedAsync" />
+                            </ViewCell.ContextActions>
+                            <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto">
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Localizacao}" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Valor, StringFormat='{}{0:c}'}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

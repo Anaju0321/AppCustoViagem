@@ -1,12 +1,17 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using AppCustoViagem.Model;
 using AppCustoViagem.View;
+using Xamarin.Forms;
+
+using System.Globalization;
+using System.Threading;
+using System.Collections.ObjectModel;
 
 namespace AppCustoViagem
 {
     public partial class App : Application
     {
+        public static ObservableCollection<Pedagio> ListaPedagios = new ObservableCollection<Pedagio>();
+
         public App()
         {
             InitializeComponent();
