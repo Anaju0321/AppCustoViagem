@@ -8,6 +8,10 @@ using AppCustoViagem.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
+using System.IO;
+using AppCustoViagem.Helper;
+
 namespace AppCustoViagem.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -16,6 +20,8 @@ namespace AppCustoViagem.View
         public CadastroViagem()
         {
             InitializeComponent();
+
+           
         }
 
         private async void ToolbarItem_ClickedAsync(object sender, EventArgs e)
@@ -25,12 +31,13 @@ namespace AppCustoViagem.View
                 Pedagio p = new Pedagio
                 {
                     Localizacao = txt_localizacao.Text,
-                    Valor = Convert.ToDouble(txt_valor.Text)
+                    Valor = Convert.ToDouble(txt_valor.Text),
+                    Valido = txt_valido.Text
                 };
 
-                App.ListaPedagios.Add(p);
+                 App.ListaPedagios.Add(p);
+                await App.Database.Insert(p);
 
-                //PropriedadesApp.ListaPedagios.Add(p);
 
                 await DisplayAlert("Deu Certo!", "Pedágio Adicionado", "OK");
 

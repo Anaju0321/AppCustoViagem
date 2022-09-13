@@ -15,9 +15,11 @@
         <StackLayout Margin="50,70,50,100">
             <ListView x:Name="lst_pedagios">
                 <ListView.Header>
-                    <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto">
+                    <Grid ColumnDefinitions="Auto, *, *" RowDefinitions="Auto">
                         <Label Grid.Row="0" Grid.Column="0" Text="Localização:" FontSize="Medium" />
                         <Label Grid.Row="0" Grid.Column="1" Text="Valor:" FontSize="Medium" />
+                        <Label Grid.Row="0" Grid.Column="2" Text="Valido:" FontSize="Medium" />
+                        
                     </Grid>
                 </ListView.Header>
 
@@ -27,9 +29,10 @@
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Remover" Clicked="MenuItem_ClickedAsync" />
                             </ViewCell.ContextActions>
-                            <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto">
+                            <Grid ColumnDefinitions="Auto, *, *" RowDefinitions="Auto">
                                 <Label Grid.Row="0" Grid.Column="0" Text="{Binding Localizacao}" />
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Valor, StringFormat='{}{0:c}'}" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Valido}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

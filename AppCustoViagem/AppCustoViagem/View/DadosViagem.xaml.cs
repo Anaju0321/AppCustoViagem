@@ -35,16 +35,24 @@ namespace AppCustoViagem.View
 
             double custo_combustivel = (distancia / km_litro) * preco_combustivel;
 
+            //string valido = txt_valido.Text;
+
             // Calculando valor do pedágio com LINQ
-            double custo_pedagio = App.ListaPedagios.Sum(i => i.Valor);
+          //  if (valido = 's')
+          //  {
+                double custo_pedagio = App.ListaPedagios.Where(i => i.Valido == "s").Sum(i => i.Valor);
 
-            // Custo total da viagem
-            double custo_viagem = custo_combustivel + custo_pedagio;
 
-            // Mostrando o resultado
-            spn_custo_combustivel.Text = custo_combustivel.ToString("C");
-            spn_custo_pedagios.Text = custo_pedagio.ToString("C");
-            lbl_custo_viagem.Text = custo_viagem.ToString("C");
+
+
+                // Custo total da viagem
+                double custo_viagem = custo_combustivel + custo_pedagio;
+
+                // Mostrando o resultado
+                spn_custo_combustivel.Text = custo_combustivel.ToString("C");
+                spn_custo_pedagios.Text = custo_pedagio.ToString("C");
+                lbl_custo_viagem.Text = custo_viagem.ToString("C");
+            //}
         }
     }
 }

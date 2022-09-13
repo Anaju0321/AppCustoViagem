@@ -41,8 +41,20 @@ namespace AppCustoViagem.View
 
         private async void MenuItem_ClickedAsync(object sender, EventArgs e)
         {
+
+
             MenuItem disparador = (MenuItem)sender;
 
+
+            /**
+             * Obtendo qual foi o produto que estava anexado no BindingContext
+             */
+            //Pedagio produto_selecionado = (Pedagio)disparador.BindingContext;
+
+            /**
+             * Perguntando ao usuário se ele realmente deseja remover. Note o await para aguardar
+             * a resposta do usuário antes de prosseguir com o código.
+             */
             Pedagio pedagio_selecionado = (Pedagio)disparador.BindingContext;
 
             bool confirmacao = await DisplayAlert("Tem certeza?",
@@ -52,7 +64,7 @@ namespace AppCustoViagem.View
             {
                 App.ListaPedagios.Remove(pedagio_selecionado);
 
-                //lst_pedagios.ItemsSource = new List<Pedagio>();
+                lst_pedagios.ItemsSource = new List<Pedagio>();
                 lst_pedagios.ItemsSource = App.ListaPedagios;
             }
         }

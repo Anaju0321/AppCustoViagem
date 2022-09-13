@@ -24,7 +24,11 @@
                        FontSize="Large"/>
                 <Entry x:Name="txt_valor" />
 
-            
+            <Label Text="Usar Pedágio?" 
+                       FontSize="Large"/>
+            <Entry x:Name="txt_valido" />
+
+
         </StackLayout>
 
     </ContentPage.Content>
